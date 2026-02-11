@@ -1,0 +1,76 @@
+
+Project Title: PetNest Network – Pet Adoption, Rescue, and Trading Platform
+
+PetNest Network is a web-based platform that connects everyone involved in pet adoption, rescue, and care. The system allows people to adopt, sell, or report stray animals easily in one place. It helps users find pets for adoption, shelters to manage rescued animals, vets to verify health details, and accessory stores to sell pet products. Reporters can report stray or injured animals by uploading photos and locations, which are then handled by nearby shelters. The platform also includes an online marketplace for pet accessories like food, toys, and medicines.
+There are multiple user roles:
+-	Admin manages all users, approvals, and reports.
+-	Reporter reports stray or injured animals.
+-	Adopter browses and adopts pets.
+-	Individual Seller lists pets for sale or adoption.
+-	Shelter/Rescue Organization handles rescued animals.
+-	Pet Accessories Seller runs small stores for pet products.
+Overall, PetNest Network creates a community-driven system where different users work together to rescue, adopt, and care for animals efficiently.
+
+Admin:
+-	Verifies adopters, sellers, users
+-	Manages everything
+-	Add, remove, verify rescue organizations for ill & stray animals report
+-	Handle all the process and applications of stray animals
+-	Must have secure account, for login, logout
+-	If the reported/sick animal case is done, then mark that case clear
+-	View all the users, their roles, can add more, edit or remove any (adopter/reporter/seller/etc every role)
+-	Edit about, remove/approve any testimonials
+
+Reporter:
+-	Need an account to create so have login, signup functionality
+-	Fill out the form for stray or sick animal to send to shelter/rescue organization.. must include his own.. personal name, details, cnic, contact number.. then animal type, breed(optional), location, city, street, region, photos/videos(must), reason, option(stray/sick/dead), description, then send form.
+-	have his own profile.. he can edit it.. like profile pic, name, details, etc.. can edit them, have separate section of history, to view his reports, and their actions like case pending, seen, under work, or case approved. 
+-	If, he’s a reporter, and has done like more than 5 reports, then give him a badge of Star Reporter, which must be visible on his profile, and when he’s submitting new reports.
+-	Have his own dashboard of reporter, his sections, profile, history, Report New animal, Edit existing, View Reports submitted, view rescue organizations and their info and location, their rescued number of animals. 
+-	Can view and explore PetLink homepage, about, header footer, add testimonial, explore basic of this website, but his own role functionality is full & responsive
+
+Adopter:
+-	Must have to create an account, signup, then login
+-	Explore the animals sections, have filters like search by location, search by animals, search by recent(date upload), search by pro sellers, search by particular breed of that animal, search by ratings(like the animals with more stars) .. can see the images, name, details, of the animals, can mark animals as save for later, or adopt btn, star btn as u like that animal
+-	Can click on any animal section to view that animal, his breed, name, details, images, health, habits, owner/seller details, price, owner’s profile, chat option to chat with that particular owner(chat inbox, with real-time chatting on both side, with text and image sharing options)
+-	When press adopt btn, it should move to the pricing section and chat bot, and then giving adoption option.
+-	Can view his profile, edit his details, name, profile photo, interests, like animals which he like the most, preferences
+-	Can view his history section, if he adopt any animal, then his details, price in his history
+-	Can view the inbox, his current or previous chats with sellers
+-	Can view his saved animals, favourite stared animals, as can edit them.. as can mark then unsaved or unstar
+-	View, explore pet store for buying any accessories for their pets
+-	Can view and explore PetLink homepage, about, header footer, add testimonial, explore basic of this website, but his own role functionality is full & responsive
+
+Seller:
+-	Must have an account, secure signup, login 
+-	Can fill the form to sell the new animal, images, name, details, animal, breed, health, habits, location, price, description, other checks
+-	Have section to explore his previous animals forms for sell, can edit them, analyze them, how many people star that, etc
+-	Can chat with new adopters/buyers, view their profile, interests, close deals
+-	If any seller has successfully closed more than 5 deals, then mark them as PRO seller, and add badge on their profile.. so buyers also know
+-	If sell any animal, then mark that form as deal closed, so no more buyers come to adopt from that form of animal adoption.
+-	View, explore pet store for buying any accessories for their pets
+-	Can view and explore PetLink homepage, about, header footer, add testimonial, explore basic of this website, but his own role functionality is full & responsive
+
+Shelter/Rescue Organizations:
+-	Must have to login by the provided credentials by admin.
+-	Can view all the reports of stray, sick and dead animals.
+-	Can select from 3 categories, one for stray animals, and can see all the animals reported form listed, and can apply for rescue & shelter. Second category for sick animals, and can see all the animals reported form listed, and can apply for rescue & recovery. Third category is for dead animals, and can see all the animals reported form listed, and can apply for rescue& their final settling.
+-	Can view the reporter profile and details. 
+-	Must have an account, with their name of organization, details, contact number, location, profile photo/logo, number of animals rescued, recovered, settled with their details.
+-	When pressed btn for rescue, recover, settle, it should show the process success, like is it pending, case done, under consideration or working. 
+-	Must have separate section to view the history or analysis.. like the cases pending, cases under consideration, cases done, cases working.. with there forms and details.
+-	New organizations can apply for creating account, with filling all the necessary details, but but they must wait.. until the admin approves them.. and once approved.. then they can do all the other necessary actions to perform.
+-	Can view and explore PetLink homepage, about, header footer, add testimonial, explore basic of this website, but his own role functionality is full & responsive
+
+Pet Accessories Seller:
+-	Must have an account, secure login, signup
+-	Have his own profile for his details, like name, location, details, image
+-	Have his e-shop, like where he can add new item(any accessory, food, toy for animals, add images, title, description, price, optionally specify particular animal, etc), edit, remove them
+-	Can view the sells
+-	Other stuff for this functionality
+
+
+
+
+
+

@@ -1,0 +1,148 @@
+PetNest-Network/
+│
+├── index.html
+├── about.html
+├── contact.html
+│
+├── backend/
+├── __init__.py           ← NEW: Empty file
+│   ├── app.py
+│   ├── config.py
+│   ├── requirements.txt
+│   ├── run.py
+│   ├── wsgi.py
+│   ├── .env
+│   ├── setup.py              ← NEW: Run this first
+|
+│   │
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   ├── pet.py
+│   │   ├── animal_report.py
+│   │   ├── shelter.py
+│   │   ├── adoption.py
+│   │   ├── favorite.py
+│   │   ├── product.py
+│   │   ├── order.py
+│   │   ├── testimonial.py
+│   │   ├── chat.py
+│   │   ├── pet_image.py
+│   │   └── notification.py
+│   │
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── users.py
+│   │   ├── pets.py
+│   │   ├── reports.py
+│   │   ├── shelters.py
+│   │   ├── adoptions.py
+│   │   ├── products.py
+│   │   ├── orders.py
+│   │   ├── testimonials.py
+│   │   ├── chat.py
+│   │   ├── admin.py
+│   │   └── dashboard.py
+│   │
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── auth_utils.py
+│   │   ├── file_upload.py
+│   │   ├── validators.py
+│   │   └── helpers.py
+│   │
+│   ├── static/
+│   │   ├── uploads/
+│   │   │   ├── pets/
+│   │   │   ├── products/
+│   │   │   └── profiles/
+│   │   │
+│   │   └── temp/
+│   │
+│   └── middleware/
+│       ├── __init__.py
+│       ├── auth_middleware.py
+│       └── role_middleware.py
+│
+├── assets/           # Your existing frontend assets
+│   ├── /css/
+│   │   ├── styles.css         → Global styling
+│   │   ├── responsive.css    → Media queries for responsiveness
+│   │   └── bootstrap.min.css
+│   │
+│   ├── /js/
+│   │   ├── main.js           → General site scripts
+│   │   ├── auth.js           → Login/signup scripts
+│   │   ├── chat.js           → Chatbox functionality
+│   │   ├── dashboard.js      → Role-specific dashboard logic
+│   │   ├── report.js         → Reporter’s functionality (report form)
+│   │   └── adopt.js          → Adopter’s pet filtering/adoption
+│   │
+│   ├── /images/
+│   │   ├── logo.png
+│   │   ├── icons/
+│   │   └── pets/
+│   │
+│   └── /fonts/
+|
+├── components/       # Your existing components
+│   ├── header.html           → Navbar
+│   ├── footer.html           → Footer
+│   ├── sidebar.html          → Dashboard side menu
+│   └── modal.html            → Reusable popups (login/signup)
+│
+|── pages/
+│   ├── /auth/
+│   │   ├── login.html
+│   │   └── signup.html
+│   │
+│   ├── /admin/
+│   │   ├── admin-dashboard.html
+│   │   ├── manage-users.html
+│   │   ├── manage-reports.html
+│   │   └── manage-organizations.html
+│   │
+│   ├── /reporter/
+│   │   ├── reporter-dashboard.html
+│   │   ├── report-form.html
+│   │   ├── report-history.html
+│   │   └── reporter-profile.html
+│   │
+│   ├── /adopter/
+│   │   ├── adopter-dashboard.html
+│   │   ├── adopt-pets.html
+│   │   ├── adopter-history.html
+│   │   ├── adopter-favourites.html
+│   │   ├── chat.html
+│   │   └── adopter-profile.html
+│   │
+│   ├── /seller/
+│   │   ├── seller-dashboard.html
+│   │   ├── add-pet.html
+│   │   ├── seller-listings.html
+│   │   ├── seller-history.html
+│   │   ├── chat.html
+│   │   └── seller-profile.html
+│   │
+│   ├── /shelter/
+│   │   ├── shelter-dashboard.html
+│   │   ├── shelter-reports.html
+│   │   ├── shelter-history.html
+│   │   └── shelter-profile.html
+│   │
+│   ├── /store/
+│   │   ├── store-dashboard.html
+│   │   ├── add-item.html
+│   │   ├── my-products.html
+│   │   ├── store-sales.html
+│   │   └── store-profile.html
+│   │
+│   └── /shared/
+│       ├── testimonials.html
+│       └── explore-store.html
+│
+├── database/
+|    └── petnest_db.sql        → All tables, keys, constraints, dummy data
+│
+└── structure.txt     # Symlink to backend/static/uploads

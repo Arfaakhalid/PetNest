@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - PetNest Network</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --primary-dark: #e55a2b;
+            --secondary: #2C3E50;
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --light-gray: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --light-gray: #1e1e1e;
+            --card-bg: #1e1e1e;
+            --border-color: #333333;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            --secondary: #34495e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Header Styles */
+        .navbar {
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--text-color) !important;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 0;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Privacy Policy Content Styles */
+        .privacy-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .privacy-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .privacy-content {
+            padding: 80px 0;
+        }
+
+        .privacy-section {
+            margin-bottom: 50px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .privacy-section h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .privacy-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .privacy-section p {
+            text-align: justify;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .privacy-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .privacy-section li {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--light-gray);
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+            transition: var(--transition);
+        }
+
+        .copyright-notice {
+            background: var(--secondary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .copyright-notice h3 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .copyright-notice p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+
+        /* Footer Styles */
+        .main-footer {
+            background: var(--secondary);
+            color: white;
+            padding: 100px 0 0;
+            position: relative;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-brand {
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo {
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-logo i {
+            margin-right: 12px;
+            font-size: 2.2rem;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .footer-title {
+            font-weight: 800;
+            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            position: relative;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a i {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .footer-links a:hover i {
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 2.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.1rem;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-paw"></i>
+                    <span>PetNest</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Get Involved
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="pages/auth/login.html">Adopt a Pet</a></li>
+                                <li><a class="dropdown-item" href="pages/auth/login.html">Report Animal</a></li>
+                                <li><a class="dropdown-item" href="pages/auth/login.html">Sell/Adopt Out</a></li>
+                                <li><a class="dropdown-item" href="pages/auth/login.html">Shelter Portal</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/auth/login.html">Pet Store</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-actions ms-3">
+                        <a href="pages/auth/login.html" class="btn btn-outline-primary me-2">Login</a>
+                        <a href="pages/auth/signup.html" class="btn btn-primary">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Privacy Policy Hero Section -->
+    <section class="privacy-hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us. This policy explains how PetNest Network collects, uses, and protects your personal information.</p>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="privacy-content">
+        <div class="container">
+            <div class="privacy-section">
+                <h2>Introduction</h2>
+                <p>Welcome to PetNest Network. We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy outlines how we collect, use, store, and protect your information when you use our platform.</p>
+                <p>PetNest Network is a community-driven platform connecting pet lovers, shelters, and rescue organizations to create a better world for animals. Our system allows people to adopt, sell, or report stray animals easily in one place. It helps users find pets for adoption, shelters to manage rescued animals, vets to verify health details, and accessory stores to sell pet products.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Information We Collect</h2>
+                <p>We collect information that you provide directly to us when you:</p>
+                <ul>
+                    <li>Create an account on our platform</li>
+                    <li>Fill out forms to report animals, list pets for adoption, or sell pet accessories</li>
+                    <li>Communicate with other users through our chat system</li>
+                    <li>Participate in surveys or provide testimonials</li>
+                    <li>Contact our support team</li>
+                </ul>
+                <p>The types of information we collect may include:</p>
+                <ul>
+                    <li>Personal identification information (name, email address, phone number, CNIC)</li>
+                    <li>Location data (city, street, region)</li>
+                    <li>Photos and videos of animals</li>
+                    <li>Payment information for transactions</li>
+                    <li>Communication history with other users</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>How We Use Your Information</h2>
+                <p>We use the information we collect for various purposes, including:</p>
+                <ul>
+                    <li>To provide and maintain our services</li>
+                    <li>To facilitate communication between users (adopters, sellers, reporters, shelters)</li>
+                    <li>To process transactions and manage user accounts</li>
+                    <li>To verify user identities and prevent fraud</li>
+                    <li>To send administrative information and updates</li>
+                    <li>To respond to your inquiries and provide customer support</li>
+                    <li>To improve our platform and develop new features</li>
+                    <li>To monitor and analyze usage patterns and trends</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <p><strong>User Roles and Data Usage:</strong> Depending on your role (Admin, Reporter, Adopter, Seller, Shelter/Rescue Organization, or Pet Accessories Seller), we collect and use specific information relevant to your activities on our platform. For example, reporters provide animal sighting information, while shelters receive these reports to facilitate animal rescue operations.</p>
+                </div>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Information Sharing and Disclosure</h2>
+                <p>We do not sell, trade, or rent your personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information regarding visitors and users with our business partners and trusted affiliates.</p>
+                <p>We may share your information in the following circumstances:</p>
+                <ul>
+                    <li>With other users as necessary for the platform's functionality (e.g., sharing reporter details with shelters, or seller information with potential adopters)</li>
+                    <li>With service providers who assist us in operating our platform</li>
+                    <li>When required by law or to respond to legal process</li>
+                    <li>To protect the rights and property of PetNest Network, our users, or the public</li>
+                    <li>In connection with any merger, sale of company assets, or acquisition</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Data Security</h2>
+                <p>We implement appropriate security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information. These include encryption, secure socket layer (SSL) technology, and regular security assessments.</p>
+                <p>However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>User Rights and Choices</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access and review the personal information we hold about you</li>
+                    <li>Correct any inaccurate or incomplete personal information</li>
+                    <li>Request deletion of your personal information, subject to certain exceptions</li>
+                    <li>Object to or restrict the processing of your personal information</li>
+                    <li>Withdraw consent where we rely on consent to process your information</li>
+                    <li>Export your data in a portable format</li>
+                </ul>
+                <p>To exercise these rights, please contact us using the information provided in the Contact section of this policy.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Cookies and Tracking Technologies</h2>
+                <p>We use cookies and similar tracking technologies to track activity on our platform and hold certain information. Cookies are files with a small amount of data that may include an anonymous unique identifier.</p>
+                <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our platform.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Changes to This Privacy Policy</h2>
+                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "effective date" at the top.</p>
+                <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                <ul>
+                    <li>By email: privacy@petnest.com</li>
+                    <li>By visiting our Contact page</li>
+                    <li>By phone: +92 (333) 123-4567</li>
+                    <li>By mail: 123 Pet Street, Animal City, Lahore</li>
+                </ul>
+            </div>
+
+            <div class="copyright-notice">
+                <h3>Intellectual Property Notice</h3>
+                <p>All rights reserved to Arfa Rumman Khalid. PetNest Network, including its concept, design, implementation, and all associated intellectual property, is the sole creation of Arfa Rumman Khalid. This platform represents her original work developed as part of her Web Technologies semester project. The innovative approach to connecting pet lovers, shelters, and rescue organizations through a comprehensive digital ecosystem is her unique vision. No part of this project may be reproduced, distributed, or transmitted in any form without her express written permission.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row g-5">
+                    <div class="col-lg-4">
+                        <div class="footer-brand">
+                            <a href="index.html" class="footer-logo">
+                                <i class="fas fa-paw"></i>
+                                <span>PetNest</span>
+                            </a>
+                            <p class="footer-description">
+                                PetNest Network is a community-driven platform connecting pet lovers, shelters, and rescue organizations to create a better world for animals.
+                            </p>
+                            <div class="social-links">
+                                <a href="https://facebook.com" target="_blank" class="social-link">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="footer-links">
+                            <h4 class="footer-title">Quick Links</h4>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="pages/auth/login.html">Login</a></li>
+                                <li><a href="pages/auth/signup.html">Sign Up</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-links">
+                            <h4 class="footer-title">Get Involved</h4>
+                            <ul>
+                                <li><a href="pages/auth/login.html">Adopt a Pet</a></li>
+                                <li><a href="pages/auth/login.html">Report Animal</a></li>
+                                <li><a href="pages/auth/login.html">Sell/Adopt Out</a></li>
+                                <li><a href="pages/auth/login.html">Shelter Portal</a></li>
+                                <li><a href="pages/auth/login.html">Pet Store</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="footer-contact">
+                            <h4 class="footer-title">Contact Info</h4>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>123 Pet Street, Animal City, Lahore</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+92 (333) 123-4567</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>info@petnest.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Fri: 9AM-6PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">&copy; 2025 PetNest Network. All rights reserved by Arfa Rumman Khalid</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                            <a href="#">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply the saved theme on page load
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Toggle theme when button is clicked
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.getAttribute('data-theme') === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+    </script>
+</body>
+</html>

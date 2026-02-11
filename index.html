@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetNest Network - Pet Adoption, Rescue, and Trading Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-light: #FF8E53;
+            --primary-dark: #E55A2B;
+            --primary-glow: rgba(255, 107, 53, 0.8);
+            --secondary: #2D3047;
+            --light: #FFFFFF;
+            --dark: #121212;
+            --gray: #6C757D;
+            --light-gray: #F8F9FA;
+            --dark-gray: #495057;
+            --success: #28A745;
+            --warning: #FFC107;
+            --danger: #DC3545;
+            --neon-orange: #ff4500;
+            --neon-yellow: #ffd700;
+            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.15);
+            --border-radius: 20px;
+        }
+
+        [data-theme="dark"] {
+            --light: #1a1a1a;
+            --light-gray: #2a2a2a;
+            --dark: #f8f9fa;
+            --gray: #a0a0a0;
+            --dark-gray: #cccccc;
+            --secondary: #3A3D5A;
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            transition: var(--transition);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Modern Background */
+        .modern-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #fff9f7 0%, #fff5f0 50%, #fff0e6 100%);
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .modern-bg {
+            background: linear-gradient(135deg, #1a0f0a 0%, #2a1a10 50%, #3a2515 100%);
+        }
+
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+        }
+
+        .bg-shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-light);
+            top: -100px;
+            right: -100px;
+            animation: floatShape 25s ease-in-out infinite;
+        }
+
+        .bg-shape-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            bottom: -50px;
+            left: -50px;
+            animation: floatShape 30s ease-in-out infinite reverse;
+        }
+
+        .bg-shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary-dark);
+            top: 50%;
+            left: 10%;
+            animation: floatShape 35s ease-in-out infinite;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -40px) rotate(5deg); }
+            50% { transform: translate(-20px, 30px) rotate(-5deg); }
+            75% { transform: translate(40px, 20px) rotate(3deg); }
+        }
+
+        /* Header Styles */
+        .main-header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(25px);
+            box-shadow: 0 8px 32px rgba(255, 107, 53, 0.15);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+        }
+
+        [data-theme="dark"] .main-header {
+            background: rgba(26, 26, 26, 0.92);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            text-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .navbar-brand i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            animation: brandPulse 3s infinite;
+        }
+
+        @keyframes brandPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .nav-link {
+            font-weight: 700;
+            color: var(--dark) !important;
+            margin: 0 10px;
+            position: relative;
+            transition: var(--transition);
+            padding: 12px 0 !important;
+        }
+
+        [data-theme="dark"] .nav-link {
+            color: var(--dark) !important;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px var(--primary-glow);
+        }
+
+        .nav-link:hover::before, .nav-link.active::before {
+            width: 100%;
+        }
+
+        /* Button Styles */
+        .btn {
+            font-weight: 800;
+            border-radius: 50px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 8px 25px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px var(--primary-glow);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            background: transparent;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.2);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Hero Section - Fucking Awesome Redesign */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 5s;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        .shape-4 {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 15s;
+        }
+
+        .shape-5 {
+            width: 90px;
+            height: 90px;
+            top: 40%;
+            left: 15%;
+            animation-delay: 20s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-weight: 900;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            animation: titleEntrance 1.5s ease-out;
+        }
+
+        [data-theme="dark"] .hero-title {
+            color: var(--dark);
+        }
+
+        .hero-title .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title .text-gradient::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 107, 53, 0.2);
+            z-index: -1;
+            border-radius: 10px;
+            transform: skew(-15deg);
+        }
+
+        @keyframes titleEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            opacity: 0.9;
+            animation: subtitleEntrance 1.8s ease-out;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        [data-theme="dark"] .hero-subtitle {
+            color: var(--dark);
+        }
+
+        @keyframes subtitleEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: buttonsEntrance 2s ease-out;
+        }
+
+        @keyframes buttonsEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Visual - Modern Design */
+        .hero-visual {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-cards {
+            position: relative;
+            width: 100%;
+            height: 500px;
+        }
+
+        .card {
+            position: absolute;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border: 5px solid white;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-1 {
+            width: 250px;
+            height: 300px;
+            top: 0;
+            left: 0;
+            transform: rotate(-5deg);
+            animation: floatCard1 8s ease-in-out infinite;
+        }
+
+        .card-2 {
+            width: 280px;
+            height: 320px;
+            top: 50px;
+            right: 0;
+            transform: rotate(3deg);
+            animation: floatCard2 10s ease-in-out infinite;
+        }
+
+        .card-3 {
+            width: 220px;
+            height: 280px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            animation: floatCard3 12s ease-in-out infinite;
+        }
+
+        @keyframes floatCard1 {
+            0%, 100% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(-5deg) translateY(-20px); }
+        }
+
+        @keyframes floatCard2 {
+            0%, 100% { transform: rotate(3deg) translateY(0); }
+            50% { transform: rotate(3deg) translateY(-25px); }
+        }
+
+        @keyframes floatCard3 {
+            0%, 100% { transform: translateX(-50%) rotate(-2deg) translateY(0); }
+            50% { transform: translateX(-50%) rotate(-2deg) translateY(-15px); }
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 30px 60px rgba(255, 107, 53, 0.3);
+            animation-play-state: paused;
+        }
+
+        /* Stats Section - Modern Redesign */
+        .stats-section {
+            padding: 120px 0;
+            background: rgba(255, 255, 255, 0.85);
+            position: relative;
+            backdrop-filter: blur(15px);
+        }
+
+        [data-theme="dark"] .stats-section {
+            background: rgba(42, 42, 42, 0.85);
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 107, 53, 0.15);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .stat-card {
+            background: rgba(50, 50, 50, 0.95);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(255, 107, 53, 0.25);
+            border-color: var(--primary);
+        }
+
+        .stat-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 15px 30px var(--primary-glow);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover .stat-icon {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 20px 40px var(--primary-glow);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        [data-theme="dark"] .stat-number {
+            color: var(--dark);
+        }
+
+        .stat-label {
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        [data-theme="dark"] .stat-label {
+            color: var(--dark);
+        }
+
+        /* Features Section - Modern Redesign */
+        .features-section {
+            padding: 140px 0;
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        [data-theme="dark"] .features-section {
+            background: rgba(42, 42, 42, 0.9);
+        }
+
+        .section-header {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-weight: 900;
+            font-size: 3.5rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            text-align: center;
+        }
+
+        [data-theme="dark"] .section-title {
+            color: var(--dark);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--primary-glow);
+        }
+
+        .section-subtitle {
+            color: var(--dark);
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] .section-subtitle {
+            color: var(--dark);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            height: 100%;
+        }
+
+        [data-theme="dark"] .feature-card {
+            background: rgba(50, 50, 50, 0.95);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(255, 107, 53, 0.3);
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 15px 35px var(--primary-glow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 25px 50px var(--primary-glow);
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            z-index: -1;
+            opacity: 0.3;
+            animation: iconPulse 2s infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        .feature-card h3 {
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-size: 1.6rem;
+        }
+
+        [data-theme="dark"] .feature-card h3 {
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--dark);
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] .feature-card p {
+            color: var(--dark);
+        }
+
+        .feature-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,107,53,0.05), rgba(255,142,83,0.02));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-overlay {
+            opacity: 1;
+        }
+
+        /* Process Section - Modern Redesign */
+        .process-section {
+            padding: 140px 0;
+            background: rgba(255, 255, 255, 0.85);
+            position: relative;
+        }
+
+        [data-theme="dark"] .process-section {
+            background: rgba(42, 42, 42, 0.85);
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .step-card {
+            background: rgba(50, 50, 50, 0.95);
+        }
+
+        .step-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(255, 107, 53, 0.25);
+        }
+
+        .step-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(255, 107, 53, 0.1);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            line-height: 1;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px var(--primary-glow);
+            transition: var(--transition);
+        }
+
+        .step-card:hover .step-icon {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        .step-card h3 {
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-size: 1.5rem;
+        }
+
+        [data-theme="dark"] .step-card h3 {
+            color: var(--dark);
+        }
+
+        .step-card p {
+            color: var(--dark);
+            opacity: 0.9;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] .step-card p {
+            color: var(--dark);
+        }
+
+        /* Community Section - Modern Redesign */
+        .community-section {
+            padding: 140px 0;
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        [data-theme="dark"] .community-section {
+            background: rgba(42, 42, 42, 0.9);
+        }
+
+        .community-title {
+            font-weight: 900;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        [data-theme="dark"] .community-title {
+            color: var(--dark);
+        }
+
+        .community-text {
+            color: var(--dark);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] .community-text {
+            color: var(--dark);
+        }
+
+        .community-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat h3 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat p {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .stat p {
+            color: var(--dark);
+        }
+
+        .community-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .community-visual {
+            position: relative;
+            height: 400px;
+        }
+
+        .floating-avatars {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .avatar {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-1 {
+            top: 0;
+            left: 20%;
+            animation: floatAvatar1 8s ease-in-out infinite;
+        }
+
+        .avatar-2 {
+            top: 20%;
+            right: 10%;
+            animation: floatAvatar2 10s ease-in-out infinite;
+        }
+
+        .avatar-3 {
+            bottom: 30%;
+            left: 10%;
+            animation: floatAvatar3 12s ease-in-out infinite;
+        }
+
+        .avatar-4 {
+            bottom: 10%;
+            right: 30%;
+            animation: floatAvatar4 9s ease-in-out infinite;
+        }
+
+        .avatar-5 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            animation: floatAvatar5 15s ease-in-out infinite;
+        }
+
+        @keyframes floatAvatar1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        @keyframes floatAvatar2 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(-10deg); }
+        }
+
+        @keyframes floatAvatar3 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        @keyframes floatAvatar4 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(-5deg); }
+        }
+
+        @keyframes floatAvatar5 {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .avatar:hover {
+            transform: scale(1.2);
+            z-index: 10;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.3);
+            animation-play-state: paused;
+        }
+
+        /* Testimonials Section - Modern Redesign */
+        .testimonials-section {
+            padding: 140px 0;
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .testimonials-section {
+            background: rgba(42, 42, 42, 0.9);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 107, 53, 0.15);
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        [data-theme="dark"] .testimonial-card {
+            background: rgba(50, 50, 50, 0.95);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(255, 107, 53, 0.25);
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            color: rgba(240, 66, 3, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-content p {
+            font-style: italic;
+            color: var(--dark);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] .testimonial-content p {
+            color: var(--dark);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover .author-avatar {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        [data-theme="dark"] .author-info h4 {
+            color: var(--dark);
+        }
+
+        .author-info p {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 140px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><path fill="%23FFFFFF" d="M500,200c100,0,200,50,250,150s50,200,0,300s-150,150-250,150s-200-50-250-150s-50-200,0-300S400,200,500,200z"/></svg>');
+            background-size: 600px;
+            animation: ctaFloat 20s linear infinite;
+        }
+
+        @keyframes ctaFloat {
+            0% { background-position: 0 0; }
+            100% { background-position: 600px 600px; }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-weight: 900;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-text {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-light:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-outline-light {
+            color: white;
+            border: 3px solid white;
+            background: transparent;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer Styles - Enhanced from About Page */
+        .main-footer {
+            background: #2D3047;
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .footer-brand {
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.7), 0 0 20px rgba(255, 107, 53, 0.5), 0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .footer-logo i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .footer-description {
+            color: #adb5bd;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            bottom: -8px;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-contact .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: #adb5bd;
+        }
+
+        .footer-contact .contact-item i {
+            margin-right: 0.75rem;
+            color: var(--primary);
+            margin-top: 0.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: #adb5bd;
+            margin-bottom: 0;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1399.98px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 1199.98px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .card-1, .card-2, .card-3 {
+                width: 200px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .stat-card, .feature-card, .step-card {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .hero-visual {
+                margin-top: 3rem;
+            }
+            
+            .card-1, .card-2, .card-3 {
+                width: 180px;
+                height: 220px;
+            }
+            
+            .community-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .avatar {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .avatar-5 {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .footer-bottom-links {
+                justify-content: flex-start;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                text-align: center;
+                padding-top: 120px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .theme-toggle {
+                bottom: 25px;
+                right: 25px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .card-1, .card-2, .card-3 {
+                position: relative;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto 2rem;
+                transform: none !important;
+                animation: none;
+            }
+            
+            .floating-cards {
+                height: auto;
+            }
+            
+            .community-visual {
+                margin-top: 3rem;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .stat-card, .feature-card, .step-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .community-title {
+                font-size: 2.2rem;
+            }
+            
+            .avatar {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .avatar-5 {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Modern Background -->
+    <div class="modern-bg">
+        <div class="bg-shape bg-shape-1"></div>
+        <div class="bg-shape bg-shape-2"></div>
+        <div class="bg-shape bg-shape-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-paw"></i>
+                    <span>PetNest</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Get Involved
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="pages/auth/login.html">Adopt a Pet</a></li>
+                                <li><a class="dropdown-item" href="pages/auth/login.html">Report Animal</a></li>
+                                <li><a class="dropdown-item" href="pages/auth/login.html">Sell/Adopt Out</a></li>
+                                <li><a class="dropdown-item" href="pages/auth/login.html">Shelter Portal</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/store/my-products.html">Pet Store</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-actions ms-3">
+                        <a href="pages/auth/login.html" class="btn btn-outline-primary me-2">Login</a>
+                        <a href="pages/auth/signup.html" class="btn btn-primary">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1000">
+                            Connecting <span class="text-gradient">Hearts</span>, Saving <span class="text-gradient">Lives</span>
+                        </h1>
+                        <p class="hero-subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                            PetNest Network is a revolutionary platform that brings together pet lovers, shelters, and rescue organizations to create a better world for our furry friends.
+                        </p>
+                        <div class="hero-buttons" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                            <a href="pages/auth/signup.html" class="btn btn-primary btn-lg me-3">
+                                <span>Get Started</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#features" class="btn btn-outline-primary btn-lg">
+                                <span>Learn More</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-visual" data-aos="fade-left" data-aos-duration="1200">
+                        <div class="floating-cards">
+                            <div class="card card-1" data-aos="fade-up" data-aos-delay="200">
+                                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Happy Dog">
+                            </div>
+                            <div class="card card-2" data-aos="fade-up" data-aos-delay="400">
+                                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1143&q=80" alt="Cute Cat">
+                            </div>
+                            <div class="card card-3" data-aos="fade-up" data-aos-delay="600">
+                                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Pet Adoption">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-count="5000">0</h3>
+                            <p class="stat-label">Pets Adopted</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-count="250">0</h3>
+                            <p class="stat-label">Partner Shelters</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-count="15000">0</h3>
+                            <p class="stat-label">Happy Users</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-count="50">0</h3>
+                            <p class="stat-label">Cities Served</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2 class="section-title">Our Amazing Features</h2>
+                <p class="section-subtitle">Discover how PetNest Network revolutionizes pet adoption, rescue, and care</p>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Pet Adoption</h3>
+                        <p>Find your perfect furry companion from thousands of pets waiting for their forever homes.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Animal Rescue</h3>
+                        <p>Report stray or injured animals and connect them with nearby rescue organizations.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3>Pet Marketplace</h3>
+                        <p>Shop for pet accessories, food, toys, and medicines from trusted sellers.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Real-time Chat</h3>
+                        <p>Communicate directly with pet owners, shelters, and sellers through our secure chat system.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Verified Profiles</h3>
+                        <p>All users, shelters, and sellers are verified to ensure a safe and trustworthy community.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Recognition System</h3>
+                        <p>Earn badges and recognition for your contributions to the pet community.</p>
+                        <div class="feature-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2 class="section-title">How PetNest Works</h2>
+                <p class="section-subtitle">Simple steps to connect, adopt, and care for pets in need</p>
+            </div>
+            <div class="process-steps">
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="step-number">01</div>
+                            <div class="step-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3>Create Account</h3>
+                            <p>Sign up and choose your role - adopter, reporter, seller, or shelter organization.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="step-number">02</div>
+                            <div class="step-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>Explore & Connect</h3>
+                            <p>Browse pets, report animals in need, or list pets for adoption/sale.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="step-number">03</div>
+                            <div class="step-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Communicate</h3>
+                            <p>Use our real-time chat to communicate with other users and make arrangements.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="step-card" data-aos="fade-up" data-aos-delay="400">
+                            <div class="step-number">04</div>
+                            <div class="step-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3>Complete Process</h3>
+                            <p>Finalize adoptions, rescue operations, or purchases through our secure platform.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="community-content">
+                        <h2 class="community-title">Join Our Vibrant Community</h2>
+                        <p class="community-text">Connect with thousands of pet lovers, shelters, and rescue organizations working together to create a better world for animals.</p>
+                        <div class="community-stats">
+                            <div class="stat">
+                                <h3>15K+</h3>
+                                <p>Active Members</p>
+                            </div>
+                            <div class="stat">
+                                <h3>500+</h3>
+                                <p>Daily Adoptions</p>
+                            </div>
+                            <div class="stat">
+                                <h3>200+</h3>
+                                <p>Partner Shelters</p>
+                            </div>
+                        </div>
+                        <div class="community-buttons">
+                            <a href="pages/auth/signup.html" class="btn btn-primary">
+                                <span>Join Now</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="about.html" class="btn btn-outline-primary">
+                                <span>Learn More</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="community-visual">
+                        <div class="floating-avatars">
+                            <div class="avatar avatar-1">
+                                <img src="https://i.pravatar.cc/300?img=5" alt="User">
+                            </div>
+                            <div class="avatar avatar-2">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="User">
+                            </div>
+                            <div class="avatar avatar-3">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="User">
+                            </div>
+                            <div class="avatar avatar-4">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="User">
+                            </div>
+                            <div class="avatar avatar-5">
+                                <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="User">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <div class="container">
+          <div class="section-header text-center" data-aos="fade-up">
+              <h2 class="section-title">What Our Community Says</h2>
+              <p class="section-subtitle">Hear from pet lovers who found their perfect companions through PetNest</p>
+          </div>
+          <div class="testimonials-slider">
+              <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                  <div class="testimonial-content">
+                      <div class="quote-icon">
+                          <i class="fas fa-quote-left"></i>
+                      </div>
+                      <p>"PetNest helped me find my perfect rescue dog, Luna. The process was smooth, and the shelter was incredibly helpful throughout."</p>
+                  </div>
+                  <div class="testimonial-author">
+                      <div class="author-avatar">
+                          <img src="https://i.pravatar.cc/300?img=19" alt="Sarah Johnson">
+                      </div>
+                      <div class="author-info">
+                          <h4>Sarah Johnson</h4>
+                          <p>Adopter</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="text-center mt-5" data-aos="fade-up">
+              <a href="contact.html#testimonials" class="btn btn-outline-primary">Share Your Story</a>
+          </div>
+      </div>
+  </section>
+           
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content text-center" data-aos="zoom-in">
+                <h2 class="cta-title">Ready to Make a Difference?</h2>
+                <p class="cta-text">Join thousands of pet lovers who are using PetNest Network to save lives and find forever homes for animals in need.</p>
+                <div class="cta-buttons">
+                    <a href="pages/auth/signup.html" class="btn btn-light btn-lg me-3">
+                        <span>Sign Up Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-outline-light btn-lg">
+                        <span>Contact Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row g-5">
+                    <div class="col-lg-4">
+                        <div class="footer-brand">
+                            <a href="index.html" class="footer-logo">
+                                <i class="fas fa-paw"></i>
+                                <span>PetNest</span>
+                            </a>
+                            <p class="footer-description">
+                                PetNest Network is a community-driven platform connecting pet lovers, shelters, and rescue organizations to create a better world for animals.
+                            </p>
+                            <div class="social-links">
+                                <a href="https://facebook.com" target="_blank" class="social-link">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="footer-links">
+                            <h4 class="footer-title">Quick Links</h4>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="pages/auth/login.html">Login</a></li>
+                                <li><a href="pages/auth/signup.html">Sign Up</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-links">
+                            <h4 class="footer-title">Get Involved</h4>
+                            <ul>
+                                <li><a href="pages/auth/login.html">Adopt a Pet</a></li>
+                                <li><a href="pages/auth/login.html">Report Animal</a></li>
+                                <li><a href="pages/auth/login.html">Sell/Adopt Out</a></li>
+                                <li><a href="pages/auth/login.html">Shelter Portal</a></li>
+                                <li><a href="pages/auth/login.html">Pet Store</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="footer-contact">
+                            <h4 class="footer-title">Contact Info</h4>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>123 Pet Street, Animal City, Lahore</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+92 (333) 123-4567</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>info@petnest.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Fri: 9AM-6PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">&copy; 2025 PetNest Network. All rights reserved by Arfa Rumman Khalid.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-bottom-links">
+                            <a href="/privacy.html">Privacy Policy</a>
+                            <a href="/privacy.html">Terms of Service</a>
+                            <a href="#">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Load header and footer
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+
+            // Theme Management
+            const themeToggle = document.querySelector('.theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('PetNest-theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+                if (savedTheme === 'dark') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('PetNest-theme', newTheme);
+                
+                // Animate theme toggle
+                themeToggle.style.transform = 'scale(1.2) rotate(360deg)';
+                setTimeout(() => {
+                    themeToggle.style.transform = 'scale(1) rotate(0deg)';
+                }, 500);
+                
+                if (newTheme === 'dark') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            });
+
+            // Counter Animation
+            function animateCounter(element, target, duration = 2000) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        element.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(start).toLocaleString();
+                    }
+                }, 16);
+            }
+
+            // Initialize counters when in viewport
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-count'));
+                        animateCounter(counter, target);
+                        observer.unobserve(counter);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.stat-number').forEach(counter => {
+                observer.observe(counter);
+            });
+
+            // Card hover effects
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'scale(1.05)';
+                    card.style.zIndex = '10';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                    card.style.zIndex = '';
+                });
+            });
+
+            // Avatar hover effects
+            document.querySelectorAll('.avatar').forEach(avatar => {
+                avatar.addEventListener('mouseenter', () => {
+                    avatar.style.transform = 'scale(1.2)';
+                    avatar.style.zIndex = '10';
+                });
+
+                avatar.addEventListener('mouseleave', () => {
+                    avatar.style.transform = '';
+                    avatar.style.zIndex = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
