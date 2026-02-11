@@ -1,7 +1,7 @@
 PetNest Network is a role-based full stack web application designed to handle pet adoption, rescue operations, and animal-related commerce within a single, unified platform.
 The system is built to reflect real-world workflows, enforce strict role boundaries, and maintain accountability across all user actions.
 
-This project is engineered as a production-grade application rather than a tutorial or academic demo.
+This project is engineered as a production-grade application, watch it working here: https://youtu.be/jZqe4INlsaQ
 
 ## Key Goals
 
@@ -77,7 +77,7 @@ This project is engineered as a production-grade application rather than a tutor
 - Edit, remove, and manage product listings
 - Track sales and order history
 
-##Technology Stack
+## Technology Stack
 ## Frontend
 - HTML5
 - CSS3
