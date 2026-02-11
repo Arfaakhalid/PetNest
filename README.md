@@ -1,6 +1,3 @@
-##PetNest Network
-##Overview
-
 PetNest Network is a role-based full stack web application designed to handle pet adoption, rescue operations, and animal-related commerce within a single, unified platform.
 The system is built to reflect real-world workflows, enforce strict role boundaries, and maintain accountability across all user actions.
 
