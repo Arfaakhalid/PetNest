@@ -11,8 +11,13 @@ This project is engineered as a production-grade application rather than a tutor
 - Maintain data integrity and operational transparency
 - Support scalable and maintainable system growth
 
+| Preview |
+|---------------|
+| ![](Screenshot%20(568).png) |
+|---------------|
+
 ## User Roles
-##Admin:
+## Admin:
 - Manage and verify all users and roles
 - Approve, edit, or remove rescue organizations
 - Monitor and control all reported animal cases
@@ -21,7 +26,7 @@ This project is engineered as a production-grade application rather than a tutor
 - Maintain secure authentication and access control
 - Secure signup and login
 
-##Reporter:
+## Reporter:
 - Submit detailed reports for stray, sick, or deceased animals
 - Upload mandatory images or videos with location data
 - View report history and real-time case progress
@@ -29,7 +34,7 @@ This project is engineered as a production-grade application rather than a tutor
 - Earn Star Reporter status after consistent contributions
 - Access rescue organization details and performance metrics
 
-##Adopter
+## Adopter
 - Secure account access
 - Browse animals with advanced filters:
     -Location
@@ -43,7 +48,7 @@ This project is engineered as a production-grade application rather than a tutor
 - Manage adoption history and preferences
 - Access pet accessories marketplace
 
-##Individual Seller
+## Individual Seller
 - Secure authentication and profile management
 - List animals for sale or adoption with complete metadata
 - Upload images, health details, habits, and pricing
@@ -53,7 +58,7 @@ This project is engineered as a production-grade application rather than a tutor
 - Earn Pro Seller badge after successful deals
 - Access pet accessories marketplace
 
-##Shelter / Rescue Organization
+## Shelter / Rescue Organization
 - Admin-approved onboarding only
 - Access categorized reports:
     -Stray animals
@@ -65,7 +70,7 @@ This project is engineered as a production-grade application rather than a tutor
 - Maintain rescue history and performance analytics
 - Manage organization profile and public trust indicators
 
-##Pet Accessories Seller
+## Pet Accessories Seller
 - Secure account and profile management
 - Create and manage an independent e-shop
 - List pet accessories, food, toys, and supplies
@@ -73,14 +78,14 @@ This project is engineered as a production-grade application rather than a tutor
 - Track sales and order history
 
 ##Technology Stack
-##Frontend
+## Frontend
 - HTML5
 - CSS3
 - JavaScript
 - Bootstrap
 - Responsive, role-aware UI components
 
-##Backend
+## Backend
 - Python
 - Flask framework
 - Modular blueprint-based architecture
@@ -88,18 +93,18 @@ This project is engineered as a production-grade application rather than a tutor
 - Role-based route protection
 - Secure authentication and session handling
 
-##Database
+## Database
 - SQL-based relational database
 - Normalized schema with referential integrity
 - Optimized queries for read-heavy workflows
 - Structured separation of transactional and reference data
 
-##Environment & Tools
+## Environment & Tools
 - XAMPP for local development
 - Environment-based configuration
 - Structured error handling and logging
 
-##Core Features
+## Core Features
 - Multi-role authentication and authorization
 - Real-time messaging system
 - Case-driven rescue workflow management
@@ -116,14 +121,14 @@ This project is engineered as a production-grade application rather than a tutor
 - No direct client-side database access
 - Graceful error handling
 
-##Project Status
+## Project Status
 This project is developed as a scalable, production-oriented system demonstrating:
 - Real-world application architecture
 - Multi-stakeholder workflow design
 - Clean backend–frontend separation
 - Secure and maintainable code structure
 
-##Final Note
+## Final Note
 
 PetNest Network is built with the mindset of solving real operational problems, not showcasing basic features.
 Every component is designed to scale, remain maintainable, and support responsible use.
